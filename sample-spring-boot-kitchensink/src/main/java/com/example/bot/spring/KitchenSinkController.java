@@ -204,14 +204,6 @@ public class KitchenSinkController {
     }
     
    private void push(@NonNull List<Message> messages) {
-//        TextMessage textMessage = new TextMessage("hello");
-//         PushMessage pushMessage = new PushMessage(
-//                 "U39a1544457d27d31218a298b0dc9c705",
-//                 textMessage
-//         );
-//         String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
-//         String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
-//        ImageMessage imageMessage = new ImageMessage(newRoyalUrl,higtUrl);
         try {
             BotApiResponse response =
                     lineMessagingClient
@@ -470,6 +462,7 @@ public class KitchenSinkController {
                 }
                 break;
             }
+            
             case "image": {
                String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
                ImageMessage imageMessage = new ImageMessage(newRoyalUrl,newRoyalUrl);
@@ -517,140 +510,223 @@ public class KitchenSinkController {
                push(stickerMessage);
                break;
             }
-            case "A": {
-                this.replyText(replyToken, "じめじめとした日が続いていますがいかがお過ごしですか？");
-                break;
-            }
-            case "B": {
-                String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
-                String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
-                String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
-                String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
-                String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
-                this.pushText("梅雨の時期にぴったりな商品を紹介します！");
-                CarouselTemplate carouselTemplate = new CarouselTemplate(
-                        Arrays.asList(
-                                new CarouselColumn(peeressUrl, "薬用ピアレス　スプリーム", "つやつやと潤い豊かな素肌をもたらします。特に温泉蒸しタオル美容におすすめの弱酸性クリームです。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/cream05.html")
-                                        
-                                )),
-                                 new CarouselColumn(softUrl, "ソフトローション", "お肌に潤いを与え女性特有のデリケートなお肌にも優しくなじみ、しっとり感も長く保つ保湿力のある化粧水です。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/lotion02.html")
-                                        
-                                )),
-                               new CarouselColumn(successUrl, "薬用サクセスストーリー", "ダイズエキス・ローヤルゼリーエキス・ヒアルロン酸をベースに、天然保湿成分を加えた弱酸性の薬用化粧品。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/white01.html")
-                                      
-                                ))
-                            ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
-            case "C": {
-                this.replyText(replyToken, "梅雨もあけ、いよいよ夏本番となってまいりましたが、日焼け対策はちゃんと行っていますか？");
-                break;
-            }
-            case "D": {
+            case "messages": {
+               String packageId = "1";
+               String stickerId = "1";
                String video = createUri("/static/buttons/ionkesho_cm.mp4");
                String videoImage = createUri("/static/buttons/video.JPG");
+               String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
+               String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
+               String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
+               String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
+               String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
+               String title = "コンテスト会場";
+               String address = "〒150-0002 東京都渋谷区渋谷２丁目２１−１"; 
+               double latitude = 35.65910807942215;
+               double longitude = 139.70372892916203;
+               ImageMessage imageMessage = new ImageMessage(newRoyalUrl,newRoyalUrl);
+               push(imageMessage);
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
                VideoMessage videoMessage = new VideoMessage(video,videoImage);
-               this.pushText("新しいCMが公開されました！");
                push(videoMessage);
-               break;
-            }
-            case "E": {
-                String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
-                String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
-                String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
-                String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
-                String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
-                this.pushText("夏の暑い時期にぴったりな商品を紹介します！");
-                CarouselTemplate carouselTemplate = new CarouselTemplate(
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+               AudioMessage audioMessage = new AudioMessage(video,100);
+               push(audioMessage);
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+               StickerMessage stickerMessage = new StickerMessage(packageId,stickerId);
+               push(stickerMessage);
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+               LocationMessage locationMessage = new LocationMessage(title, address, latitude, longitude);
+               this.pushText("コンテストのお知らせ\n9月に行われるコンテストの場所が決定いたしました。\n奮ってご参加ください。");
+               push(locationMessage);
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+               ConfirmTemplate confirmTemplate = new ConfirmTemplate(
+                        "ご購入いただきました商品の使い心地はいかがでしょうか?",
+                        new MessageAction("良い", "良い"),
+                        new MessageAction("悪い", "悪い")
+               );
+               TemplateMessage templateMessage1 = new TemplateMessage("Confirm alt text", confirmTemplate);
+               push(templateMessage1);
+               try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+               ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
+                        peeressUrl,
+                        "My button sample",
+                        "Hello, my button",
                         Arrays.asList(
-                                new CarouselColumn(peeressUrl, "薬用ピアレス　スプリーム", "つやつやと潤い豊かな素肌をもたらします。特に温泉蒸しタオル美容におすすめの弱酸性クリームです。", Arrays.asList(
                                         new URIAction("電話をかける",
                                                       "tel:090XXXX6238"),
                                         new URIAction("商品ページ",
                                                 "http://www.ionkesho.jp/products/list/cream05.html")
                                         
-                                )),
-                                new CarouselColumn(softUrl, "ソフトローション", "お肌に潤いを与え女性特有のデリケートなお肌にも優しくなじみ、しっとり感も長く保つ保湿力のある化粧水です。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/lotion02.html")
-                                        
-                                )),
-                               new CarouselColumn(newRoyalUrl, "ニューロイヤル", "イオン化粧品独自の温泉蒸しタオル美容に欠かせないアイテム。蒸しタオルによって、成分がなじみ、きめの整った素肌へ導きます。", Arrays.asList(
+                        ));
+                TemplateMessage templateMessage2 = new TemplateMessage("Button alt text", buttonsTemplate);
+                push(templateMessage2);
+                try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                CarouselTemplate carouselTemplate = new CarouselTemplate(
+                        Arrays.asList(
+                                new CarouselColumn(newRoyalUrl, "ニューロイヤル", "イオン化粧品独自の温泉蒸しタオル美容に欠かせないアイテム。蒸しタオルによって、成分がなじみ、きめの整った素肌へ導きます。", Arrays.asList(
                                         new URIAction("電話をかける",
                                                       "tel:090XXXX6238"),
                                         new URIAction("商品ページ",
                                                 "http://www.ionkesho.jp/products/list/cream01.html")
                                         
+                                )),
+                                new CarouselColumn(peeressUrl, "薬用ピアレス　スプリーム", "つやつやと潤い豊かな素肌をもたらします。特に温泉蒸しタオル美容におすすめの弱酸性クリームです。", Arrays.asList(
+                                        new URIAction("電話をかける",
+                                                      "tel:090XXXX6238"),
+                                        new URIAction("商品ページ",
+                                                "http://www.ionkesho.jp/products/list/cream05.html")
+                                        
+                                )),
+                               new CarouselColumn(softUrl, "ソフトローション", "お肌に潤いを与え女性特有のデリケートなお肌にも優しくなじみ、しっとり感も長く保つ保湿力のある化粧水です。", Arrays.asList(
+                                        new URIAction("電話をかける",
+                                                      "tel:090XXXX6238"),
+                                        new URIAction("商品ページ",
+                                                "http://www.ionkesho.jp/products/list/lotion02.html")
+                                      
                                 ))
                             ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
-            case "F": {
-               String title = "コンテスト会場";
-               String address = "〒150-0002 東京都渋谷区渋谷２丁目２１−１"; 
-               double latitude = 35.65910807942215;
-               double longitude = 139.70372892916203;
-               LocationMessage locationMessage = new LocationMessage(title, address, latitude, longitude);
-               this.pushText("コンテストのお知らせ\n9月に行われるコンテストの場所が決定いたしました。\n奮ってご参加ください。");
-               push(locationMessage);
+                TemplateMessage templateMessage3 = new TemplateMessage("Carousel alt text", carouselTemplate);
+                push(templateMessage3);
+                try {
+                            TimeUnit.SECONDS.sleep(3);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                ImageCarouselTemplate imageCarouselTemplate = new ImageCarouselTemplate(
+                        Arrays.asList(
+                                new ImageCarouselColumn(newRoyalUrl,
+                                        new URIAction("商品ページへ",
+                                                "http://www.ionkesho.jp/products/list/cream01.html")
+                                ),
+                                new ImageCarouselColumn(peeressUrl,
+                                        new URIAction("商品ページへ",
+                                                "http://www.ionkesho.jp/products/list/cream05.html")
+                                ),
+                                new ImageCarouselColumn(softUrl,
+                                        new URIAction("商品ページへ",
+                                                "http://www.ionkesho.jp/products/list/lotion02.html")
+                                )
+                        ));
+                TemplateMessage templateMessage4 = new TemplateMessage("ImageCarousel alt text", imageCarouselTemplate);
+                push(templateMessage4);
                break;
             }
             case "1": {
-                this.replyText(replyToken, "購入ありがとうございます");
-                break;
-            }
-            case "2": {
+                this.pushText("購入ありがとうございます");
+                try {
+                            TimeUnit.SECONDS.sleep(5);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "ご購入いただきました商品の使い心地はいかがでしょうか?",
                         new MessageAction("良い", "良い"),
                         new MessageAction("悪い", "悪い")
                 );
                 TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
-                this.reply(replyToken, templateMessage);
+                push(templateMessage);
                 break;
             }
-            case "良い": {
-                this.replyText(replyToken, "ご回答ありがとうございます！");
+            case "良い":{
+                String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
+                String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
+                String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
+                String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
+                String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
+                String homeUrl = createUri("/static/buttons/images.jpg");
+                String couponUrl = createUri("/static/buttons/coupon.jpg");
+                try {
+                            TimeUnit.SECONDS.sleep(1);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                this.pushText("ご回答ありがとうございます");
+                try {
+                            TimeUnit.SECONDS.sleep(5);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                this.pushText("そろそろ商品が少なくなっていませんか？\n限定クーポンを配布しますので、この機会にぜひお買い求めください。");
+                CarouselTemplate carouselTemplate = new CarouselTemplate(
+                        Arrays.asList(
+                                new CarouselColumn(newRoyalUrl, "ニューロイヤル", "イオン化粧品独自の温泉蒸しタオル美容に欠かせないアイテム。蒸しタオルによって、成分がなじみ、きめの整った素肌へ導きます。", Arrays.asList(
+                                        new URIAction("電話をかける",
+                                                      "tel:090XXXX6238"),
+                                        new URIAction("商品ページ",
+                                                "http://www.ionkesho.jp/products/list/cream01.html")
+                                        
+                                )),
+                                new CarouselColumn(peeressUrl, "薬用ピアレス　スプリーム", "つやつやと潤い豊かな素肌をもたらします。特に温泉蒸しタオル美容におすすめの弱酸性クリームです。", Arrays.asList(
+                                        new URIAction("電話をかける",
+                                                      "tel:090XXXX6238"),
+                                        new URIAction("商品ページ",
+                                                "http://www.ionkesho.jp/products/list/cream05.html")
+                                        
+                                )),
+                               new CarouselColumn(softUrl, "ソフトローション", "お肌に潤いを与え女性特有のデリケートなお肌にも優しくなじみ、しっとり感も長く保つ保湿力のある化粧水です。", Arrays.asList(
+                                        new URIAction("電話をかける",
+                                                      "tel:090XXXX6238"),
+                                        new URIAction("商品ページ",
+                                                "http://www.ionkesho.jp/products/list/lotion02.html")
+                                      
+                                ))
+                            ));
+                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
+                push(templateMessage);
+                ImageMessage imageMessage = new ImageMessage(couponUrl,couponUrl);
+                push(imageMessage);
                 break;
             }
             case "悪い": {
-                this.replyText(replyToken, "ご回答ありがとうございます！");
-                break;
-            }
-            case "3": {
                 String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
                 String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
                 String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
                 String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
                 String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
                 String homeUrl = createUri("/static/buttons/images.jpg");
+                try {
+                            TimeUnit.SECONDS.sleep(1);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                this.pushText("ご回答ありがとうございます");
+                try {
+                            TimeUnit.SECONDS.sleep(5);
+                 } catch (InterruptedException e) {
+                            e.printStackTrace();
+                }
+                this.pushText("新しい商品をご紹介させていただきます。");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
-                                new CarouselColumn(homeUrl,"商品紹介","そろそろ商品が残り少なくなってきていませんか？", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("ホームページ",
-                                                "http://www.ionkesho.jp")
-                                        
-                                )),
                                 new CarouselColumn(newRoyalUrl, "ニューロイヤル", "イオン化粧品独自の温泉蒸しタオル美容に欠かせないアイテム。蒸しタオルによって、成分がなじみ、きめの整った素肌へ導きます。", Arrays.asList(
                                         new URIAction("電話をかける",
                                                       "tel:090XXXX6238"),
@@ -674,49 +750,7 @@ public class KitchenSinkController {
                                 ))
                             ));
                 TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
-            case "4": {
-                String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
-                String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
-                String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
-                String successUrl = createUri("/static/buttons/11VjyV6RZDL.jpg");
-                String peeressUrl = createUri("/static/buttons/21ij1JnxCGL.jpg");
-                String homeUrl = createUri("/static/buttons/images.jpg");
-                CarouselTemplate carouselTemplate = new CarouselTemplate(
-                        Arrays.asList(
-                                new CarouselColumn(homeUrl,"新しい商品","おすすめの商品の紹介です", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("ホームページ",
-                                                "http://www.ionkesho.jp")
-                                        
-                                )),
-                                new CarouselColumn(newRoyalUrl, "ニューロイヤル", "イオン化粧品独自の温泉蒸しタオル美容に欠かせないアイテム。蒸しタオルによって、成分がなじみ、きめの整った素肌へ導きます。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/cream01.html")
-                                        
-                                )),
-                                new CarouselColumn(peeressUrl, "薬用ピアレス　スプリーム", "つやつやと潤い豊かな素肌をもたらします。特に温泉蒸しタオル美容におすすめの弱酸性クリームです。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/cream05.html")
-                                        
-                                )),
-                               new CarouselColumn(softUrl, "ソフトローション", "お肌に潤いを与え女性特有のデリケートなお肌にも優しくなじみ、しっとり感も長く保つ保湿力のある化粧水です。", Arrays.asList(
-                                        new URIAction("電話をかける",
-                                                      "tel:090XXXX6238"),
-                                        new URIAction("商品ページ",
-                                                "http://www.ionkesho.jp/products/list/lotion02.html")
-                                      
-                                ))
-                            ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
-                this.reply(replyToken, templateMessage);
+                push(templateMessage);
                 break;
             }
             case "confirm": {
@@ -747,7 +781,7 @@ public class KitchenSinkController {
                                                   "Rice=米")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
-                this.push(templateMessage);
+                push(templateMessage);
                 break;
             }
             case "carousel": {
@@ -816,10 +850,10 @@ public class KitchenSinkController {
                                 )
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("ImageCarousel alt text", imageCarouselTemplate);
-                this.push(templateMessage);
+                push(templateMessage);
                 break;
             }
-            case "all":
+            case "all":{
                 String newRoyalUrl = createUri("/static/buttons/21jO3NZSEZL.jpg");
                 String higtUrl = createUri("/static/buttons/11hcgYLUWPL.jpg");
                 String softUrl = createUri("/static/buttons/11jKc29jgaL.jpg");
@@ -917,6 +951,41 @@ public class KitchenSinkController {
                 push(locationMessage);
 
                 break;
+              }
+              case "imagemap":{
+                this.reply(replyToken, new ImagemapMessage(
+                        createUri("/static/rich"),
+                        "This is alt text",
+                        new ImagemapBaseSize(1040, 1040),
+                        Arrays.asList(
+                                new URIImagemapAction(
+                                        "https://store.line.me/family/manga/en",
+                                        new ImagemapArea(
+                                                0, 0, 520, 520
+                                        )
+                                ),
+                                new URIImagemapAction(
+                                        "https://store.line.me/family/music/en",
+                                        new ImagemapArea(
+                                                520, 0, 520, 520
+                                        )
+                                ),
+                                new URIImagemapAction(
+                                        "https://store.line.me/family/play/en",
+                                        new ImagemapArea(
+                                                0, 520, 520, 520
+                                        )
+                                ),
+                                new MessageImagemapAction(
+                                        "URANAI!",
+                                        new ImagemapArea(
+                                                520, 520, 520, 520
+                                        )
+                                )
+                        )
+                ));
+                break;
+              }
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
                 this.replyText(
